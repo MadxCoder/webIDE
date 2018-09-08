@@ -111,12 +111,59 @@ nav a#openup {
 .cf {
   zoom: 1;
 }
-
-.code {
-  margin-top: 100px;
+.IDE{
+  margin-top: 80px;
   width: 90%;
   margin-right: auto;
   margin-left: auto;
+}
+.IDE button,.IDE input{
+  margin-bottom: 20px;
+}
+.IDE button{
+  border: 1px solid #fff;
+  border-radius: 3px;
+  background-color: #1a1a1d;
+  color: #fff;
+  padding: 3px 15px;
+}
+.IDE input{
+  border: 1px solid #fff;
+  border-radius: 3px;
+  background-color: #1a1a1d;
+  color: #fff;
+  padding: 4px 15px;
+
+}
+.IDE input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #eee;
+    opacity: 1; /* Firefox */
+}
+
+.IDE input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #eee;
+}
+
+.IDE input::-ms-input-placeholder { /* Microsoft Edge */
+    color: #eee;
+}
+.inputError{
+  border: 1px solid #f5173a !important;
+}
+.inputError::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #bb2020 !important;
+    opacity: 1; /* Firefox */
+}
+
+.inputError:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: red !important;
+}
+
+.inputError::-ms-input-placeholder { /* Microsoft Edge */
+    color: red !important;
+}
+.code {
+
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 15px;
