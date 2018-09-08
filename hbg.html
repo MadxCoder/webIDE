@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="hbgstyle.css">
+
+  <!--<script src="codemirror/lib/codemirror.js"></script>
+  <link rel="stylesheet" href="codemirror/lib/codemirror.css">
+  <link rel="stylesheet" href="codemirror/theme/material.css">
+  <script src="codemirror/mode/htmlmixed/htmlmixed.js"></script>
+  <script src="codemirror/mode/javascript/javascript.js"></script>
+  <script src="codemirror/mode/xml/xml.js"></script>
+  <script src="codemirror/mode/css/css.js"></script>-->
+  <title>HTML Playground</title>
+</head>
+<body>
+  <nav class="cf">
+    <ul class="cf">
+      <li>
+        <a href="index.html">Programming</a>
+      </li>
+      <li>
+        <a href="#">what is Programming</a>
+      </li>
+      <li>
+        <a href="#">why Programming</a>
+      </li>
+      <li>
+        <a href="#">languages</a>
+      </li>
+    </ul>
+    <a href="#" id="openup">MENU</a>
+  </nav>
+
+  <div class="code">
+    <div class="html">
+      <div class="header"><p>HTML</p></div>
+      <div class="editor" id="editor">
+      </div>
+      <button id="uploader">upload</button>
+  </div>
+  <div class="css">
+    <div class="header"><p>CSS</p></div>
+    <div class="editor" id="editorcss">
+    </div>
+</div>
+  <div class="js">
+    <div class="header"><p>JS</p></div>
+    <div class="editor" id="editorjs">
+    </div>
+  </div>
+</div>
+<div class="frame">
+<iframe id="iframe"></iframe>
+
+<script src="firebase.js"></script>
+<script src="database.js"></script>
+<script src="jquery.js"></script>
+<script src="main.js"></script>
+<script src="edit.js"></script>
+<script src="ace-builds-master/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="ace-builds-master/src-noconflict/ext-emmet.js" type="text/javascript" charset="utf-8"></script>
+<script src="emmet-core-master/emmet.js" type="text/javascript" charset="utf-8"></script>
+<script src="ace-builds-master/src-noconflict/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
+<script>
+setupEditor();
+update();
+</script>
+</div>
+</body>
+</html>
