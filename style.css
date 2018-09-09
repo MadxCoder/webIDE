@@ -32,12 +32,15 @@ nav ul {
   margin: 0;
 }
 nav ul li {
-  display: inline;
+  display: inline-block;
   float: left;
+  width: 16%;
+}
+.WIPH{
+  width: 20%;
 }
 nav li a{
   display: inline-block;
-  width: 190px;
   text-decoration: none;
   padding: 8px 10px;
   color: #eee;
@@ -50,9 +53,12 @@ nav li:hover {
 nav a#openup {
   display: none;
 }
-@media screen and (max-width: 760px) {
-nav li {
-  width:25%;
+@media only screen and (max-width: 970px) {
+.WIPH,.WPH{
+  width: 30% !important;
+}
+nav ul li:not(.WIPH){
+  width: 20%;
 }
 }
 
@@ -166,7 +172,10 @@ font-size: 1.3em;
   font-size: 2.5em;
 }
 .head blockquote{
-  line-height: 0.4;
+  line-height:1.2 ;
+}
+.head blockquote q{
+  font-size: 0.9em;
 }
 .head blockquote p{
   float: right;
@@ -348,4 +357,20 @@ line-height: 1.8;
     display: grid;
     grid-template-columns: repeat(2,1fr);
     grid-gap: 1rem;
+}
+  .container h1{
+    font-size: 11vw !important;
+  }
+  .container p{
+    font-size: 8vw !important;
+  }
+  .container  blockquote q{
+    font-size: 3.8vw !important;
+  }
+
+}
+@media screen and (max-width: 640px) {
+  .container  blockquote p{
+    visibility: hidden;
+  }
 }
