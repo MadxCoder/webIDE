@@ -12,7 +12,7 @@ var frame = document.getElementById('iframe');
 function setupEditor(){
   window.editorjs = ace.edit("editorjs");
   editorjs.setTheme("ace/theme/monokai");
-  editorjs.session.setMode("ace/mode/js");
+  editorjs.session.setMode("ace/mode/javascript");
   editorjs.getSession().on('change', function() {
     update();
   });
@@ -46,18 +46,21 @@ function setupEditor(){
   fontSize: "12pt",
   enableBasicAutocompletion: true,
   enableLiveAutocompletion: true,
+  enableEmmet:true,
 });
 editorcss.setOptions({
 fontSize: "12pt",
 enableBasicAutocompletion: true,
 enableLiveAutocompletion: true,
+enableEmmet:true,
 });
 editorjs.setOptions({
 fontSize: "12pt",
 enableBasicAutocompletion: true,
 enableLiveAutocompletion: true,
+enableEmmet:true,
 });
 
 
- ace.setOption("enableEmmet", true);
+
 }

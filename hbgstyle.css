@@ -16,18 +16,23 @@ nav {
 nav ul {
   padding: 0;
   margin: 0;
+  height: 100%;
 }
 
 nav ul li {
   display: inline-block;
   float: left;
+  width: 16%;
+  height: 100%;
 }
-
+.WIPH{
+  width: 20%;
+}
 li a {
   display: inline-block;
   color: white;
   text-align: center;
-  padding: 14px 16px;
+  padding: 15px 10px;
   text-decoration: none;
   font-family: sans-serif;
 }
@@ -40,11 +45,15 @@ nav a#openup {
   display: none;
 }
 
-@media screen and (max-width: 760px) {
-  nav li {
-    width: 25%;
-  }
+@media only screen and (max-width: 970px) {
+.WIPH,.WPH{
+  width: 30% !important;
 }
+nav ul li:not(.WIPH){
+  width: 20%;
+}
+}
+
 
 @media screen and (max-width: 625px) {
   nav {
@@ -126,14 +135,15 @@ nav a#openup {
   background-color: #1a1a1d;
   color: #fff;
   padding: 3px 15px;
+  height: 25px;
 }
 .IDE input{
   border: 1px solid #fff;
-  border-radius: 3px;
+  border-radius: 5px;
   background-color: #1a1a1d;
   color: #fff;
   padding: 4px 15px;
-
+  height: 15px;
 }
 .IDE input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #eee;
@@ -163,10 +173,42 @@ nav a#openup {
     color: red !important;
 }
 .code {
-
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 15px;
+}
+@media screen and (max-width:780px) and (min-width:430px) {
+  .code {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .code .html {
+  flex: 0 0 100%;
+  }
+  .code .css,.code .js {
+  flex: 0 0 49%;
+  margin-top: 20px;
+  }
+  .code .js{
+    margin-left: 2%;
+  }
+  .frame{
+    width: 95% !important;
+  }
+}
+@media screen and (max-width:430px)  {
+  .code {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+  }
+  .code .js{
+    margin-left: inherit;
+  }
+  .frame{
+    width: 96% !important;
+  }
+
 }
 
 .html, .js, .css, .frame {
@@ -191,7 +233,7 @@ nav a#openup {
 }
 
 .frame {
-  width: 90%;
+  width: 92%;
   height: 100vh;
   margin: auto;
   margin-top: 100px;
@@ -202,7 +244,7 @@ nav a#openup {
 iframe {
   width: 100%;
   height: 100%;
-  border: 3px solid black;
+  border: 0;
 }
 
 .ace_editor {
