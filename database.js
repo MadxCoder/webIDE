@@ -102,7 +102,7 @@ database.on("child_added", snap=> {
       //editor.setValue(code);
   };
 });
-
+    initApp();
 };
 
 var sign = document.getElementById('sign');
@@ -137,6 +137,3 @@ function initApp() {
     });
 
   }
-  window.onload = function() {
-    initApp();
-  };
