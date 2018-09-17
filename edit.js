@@ -13,6 +13,7 @@ function setupEditor(){
   window.editorjs = ace.edit("editorjs");
   editorjs.setTheme("ace/theme/monokai");
   editorjs.session.setMode("ace/mode/javascript");
+  editorjs.setValue('');
   editorjs.getSession().on('change', function() {
     update();
   });
@@ -20,6 +21,7 @@ function setupEditor(){
   window.editorcss = ace.edit("editorcss");
   editorcss.setTheme("ace/theme/monokai");
   editorcss.session.setMode("ace/mode/css");
+  editorcss.setValue('');
   editorcss.getSession().on('change', function() {
     update();
   });

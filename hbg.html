@@ -4,14 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="hbgstyle.css">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-  <!--<script src="codemirror/lib/codemirror.js"></script>
-  <link rel="stylesheet" href="codemirror/lib/codemirror.css">
-  <link rel="stylesheet" href="codemirror/theme/material.css">
-  <script src="codemirror/mode/htmlmixed/htmlmixed.js"></script>
-  <script src="codemirror/mode/javascript/javascript.js"></script>
-  <script src="codemirror/mode/xml/xml.js"></script>
-  <script src="codemirror/mode/css/css.js"></script>-->
   <title>HTML Playground</title>
 </head>
 <body>
@@ -21,13 +15,16 @@
         <a href="index.html">Programming</a>
       </li>
       <li class="WIPH">
-        <a href="#">what is Programming</a>
+        <a href="#">What is Programming</a>
       </li>
       <li class="WPH">
-        <a href="#">why Programming</a>
+        <a href="#">Why Programming</a>
       </li>
       <li>
-        <a href="#">languages</a>
+        <a href="#">Languages</a>
+      </li>
+      <li id="sign">
+        <a>Sign In</a>
       </li>
     </ul>
     <a href="#" id="openup">MENU</a>
@@ -35,18 +32,25 @@
   <div class="IDE">
     <input type="text" id="filename" placeholder="Enter file name">
     <button id="uploader">upload</button>
-  <div class="code">
-    <div class="html">
+    <button id="download">GET Code</button>
+    <div id="modal" class="modal">
+    <span class="close">×</span>
+    <span id="filepicker">
+
+    </span>
+  </div>
+  <div class="code" >
+    <div class="html" id="draggable" >
       <div class="header"><p>HTML</p></div>
       <div class="editor" id="editor">
       </div>
   </div>
-  <div class="css">
+  <div class="css" id="draggable">
     <div class="header"><p>CSS</p></div>
     <div class="editor" id="editorcss">
     </div>
 </div>
-  <div class="js">
+  <div class="js" id="draggable">
     <div class="header"><p>JS</p></div>
     <div class="editor" id="editorjs">
     </div>
@@ -55,6 +59,14 @@
 </div>
 <div class="frame">
 <iframe id="iframe"></iframe>
+<div ></div>
+<style>
+  /*#draggable{
+    width: 200px;
+    height: 200px;
+    background-color: white;
+  }*/
+</style>
 
 <script src="firebase.js"></script>
 <script src="database.js"></script>
@@ -67,7 +79,80 @@
 <script>
 setupEditor();
 update();
+
+/*var database = firebase.database().ref().child('posts');
+var filepick = document.getElementById('filepick');
+var database = firebase.database().ref().child('posts');
+var filepicker = document.getElementById('filepicker');
+var txt = document.getElementById('txt');
+var modal = document.getElementById('modal');
+database.on("child_added", snap=> {
+  var newPost = snap.val().name;
+  var li = document.createElement('li');
+  filepicker.appendChild(li);
+  var filepick = document.getElementById('filepick');
+    //li.innerHTML = '<a href = "'+snap.val().url+'">hi</a>';
+//txt.placeholder = https://firebasestorage.googleapis.com/v0/b/code-database.appspot.com/o/html%2Fhi?alt=media&token=9a8a01c7-0566-4044-8afe-4b7c46ceedd2;
+    li.innerHTML = /*'<a href = "'+snap.val().url+'">'+snap.val().name/*+'</a>';
+  //console.log(newPost);
+  //var idoc = document.getElementById('iframe');
+ //idoc.src = "https://firebasestorage.googleapis.com/v0/b/code-database.appspot.com/o/html%2Fhi?alt=media&token=5b82aef8-bfa4-4d36-858d-031d32b22846";
+  //var idoccont = window.frames[0].document;
+  //var blob = idoccont;
+//console.log(window.frames[0].document.head.innerHTML);
+//console.log(typeof idoccont);
+//console.log(JSON.stringify(blob));
+  /*const reader = new FileReader();
+
+  reader.addEventListener('loadend', (e) => {
+    const text = this.result;
+    console.log(text);
+      editor.session.setValue (blob);
+  });
+  reader.readAsText(blob);
+  //console.log(idoccont);
+//  editor.setValue("");*/
+/*var storage = firebase.storage().refFromURL('https://firebasestorage.googleapis.com/v0/b/code-database.appspot.com/o/html%2Fhi?alt=media&token=9a8a01c7-0566-4044-8afe-4b7c46ceedd2');
+console.log(storage);
+// This can be downloaded directly:
+var xhr = new XMLHttpRequest();
+xhr.responseType = 'blob';
+xhr.onload = function(event) {
+  var blob = xhr.response;
+
+  const reader = new FileReader();
+  reader.readAsText(blob);
+  reader.addEventListener('loadend', (e) => {
+    const text = e.srcElement.result;
+    console.log(text);
+      editor.session.setValue (blob);
+  });
+};
+xhr.open('GET', storage);
+xhr.send();
+/*const reader = new FileReader();
+reader.readAsText(blob);
+reader.addEventListener('loadend', (e) => {
+  const text = e.srcElement.result;
+  console.log(text);
+    editor.session.setValue (blob);
+  });*//*
+})*/
+
+
+
+/*database.on('value', snap=>{
+  var nar = JSON.stringify(snap.val() , null ,3).name;
+  console.log(nar)
+  var childnum = snap.numChildren();
+  JSON.stringify(snap.val);
+});*/
 </script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script src="jquery-ui.js"></script>
+<script src="hbg.js"></script>
 </div>
 </body>
 </html>
