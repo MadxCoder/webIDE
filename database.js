@@ -82,7 +82,6 @@ database.on("child_added", snap=> {
   filepicker.appendChild(div);
   var filepick = document.getElementById('filepick');
   div.innerHTML = 'File Name: '+snap.key+'<br>'+'Uploaded: '+snap.val().date;
-  console.log(snap.val().css);
 
   //snap.key
   div.onclick = function () {
@@ -107,6 +106,7 @@ database.on("child_added", snap=> {
 
 var sign = document.getElementById('sign');
 function initApp() {
+           var provider = new firebase.auth.GoogleAuthProvider();
     // Listening for auth state changes.
     // [START authstatelistener]
     firebase.auth().onAuthStateChanged(function(user) {
@@ -128,8 +128,26 @@ function initApp() {
       }
        else {
          sign.onclick = function () {
-         var provider = new firebase.auth.GoogleAuthProvider();
          firebase.auth().signInWithRedirect(provider);
+         firebase.auth().getRedirectResult().then(function(result) {
+  if (result.credential) {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    var token = result.credential.accessToken;
+    // ...
+  }
+  // The signed-in user info.
+  var user = result.user;
+  console.log('here');
+}).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // The email of the user's account used.
+  var email = error.email;
+  // The firebase.auth.AuthCredential type that was used.
+  var credential = error.credential;
+  // ...
+});
        };
 
       }
@@ -137,3 +155,32 @@ function initApp() {
     });
 
   }
+  initApp = function() {
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in.
+        var displayName = user.displayName;
+        var email = user.email;
+        var emailVerified = user.emailVerified;
+        var photoURL = user.photoURL;
+        var uid = user.uid;
+        var phoneNumber = user.phoneNumber;
+        var providerData = user.providerData;
+        user.getIdToken().then(function(accessToken) {
+          document.getElementById('sign').innerHTML = '<a href="sign.html">Welcome '+displayName+'</a>'+
+          ' <img src="'+photoURL+'">'+'</a>';
+
+        });
+
+      } else {
+        // User is signed out.
+        document.getElementById('sign').innerHTML = '<a href="sign.html">Log In</a>';
+      }
+    }, function(error) {
+      console.log(error);
+    });
+  };
+
+  window.addEventListener('load', function() {
+    initApp()
+  });

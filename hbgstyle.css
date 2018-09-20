@@ -25,11 +25,7 @@ nav ul li {
   width: 16%;
   height: 100%;
 }
-nav li#sign {
-  float: right;
-  width: fit-content;
-  padding: 0 10px;
-}
+
 .WIPH{
   width: 20%;
 }
@@ -145,6 +141,22 @@ nav ul li:not(.WIPH){
 ::-webkit-scrollbar-thumb:hover {
     background: #000000;
     width: 15px;
+  }
+  nav img{
+    height: 30px;
+    vertical-align: middle;
+    border-radius: 50%;
+  }
+  nav li#sign {
+    float: right;
+    width: fit-content;
+    padding: 5 10px;
+    align-items: center;
+    overflow: hidden;
+  }
+  nav li#sign a {
+  align-items: center;
+  height: 18px;
   }
 .IDE{
   margin-top: 80px;

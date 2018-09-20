@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log In</title>
+  <link rel="stylesheet" href="signstyle.css">
+     <script src="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.js"></script>
+</head>
+<body>
+
+    <div id="firebaseui-auth-container"></div>
+  <script src="firebase.js"></script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.css" />
+  <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDqNbUnIczBny_GqMyX4QJWy6iSPgl6rnk",
+      authDomain: "code-database.firebaseapp.com",
+      databaseURL: "https://code-database.firebaseio.com",
+      projectId: "code-database",
+      storageBucket: "code-database.appspot.com",
+      messagingSenderId: "1051636511409"
+    };
+    firebase.initializeApp(config);
+  </script>
+  <script type="text/javascript">
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+    async function demo() {
+      await sleep(500);
+    console.log("signedin");
+    var container = document.getElementById('firebaseui-auth-container');
+    document.body.removeChild(container);
+    var newCont = document.getElementById('out');
+    var logOut = document.createElement('button');
+    logOut.innerText="Log Out";
+    logOut.herf="hbg.html";
+    newCont.appendChild(logOut);
+    logOut.onclick= function () {
+    firebase.auth().signOut().then(function() {
+  console.log('Signed Out');
+  window.location='hbg.html';
+}, function(error) {
+  console.error('Sign Out Error', error);
+});
+};
+};
+window.onload = demo();
+}
+  else {
+    // FirebaseUI config.
+    var uiConfig = {
+      signInSuccessUrl: 'hbg.html',
+      signInOptions: [
+        // Leave the lines as is for the providers you want to offer your users.
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+        firebase.auth.GithubAuthProvider.PROVIDER_ID,
+      ],
+      // tosUrl and privacyPolicyUrl accept either url string or a callback
+      // function.
+      // Terms of service url/callback.
+      tosUrl: '<your-tos-url>',
+      // Privacy policy url/callback.
+      privacyPolicyUrl: function() {
+        window.location.assign('<your-privacy-policy-url>');
+      }
+    };
+
+    // Initialize the FirebaseUI Widget using Firebase.
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+    // The start method will wait until the DOM is loaded.
+    ui.start('#firebaseui-auth-container', uiConfig);
+  }
+
+});
+  </script>
+  <div id="out">
+
+  </div>
+</body>
+</html>
