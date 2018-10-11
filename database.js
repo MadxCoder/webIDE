@@ -12,6 +12,8 @@ firebase.initializeApp(config);
 
 var uploader = document.getElementById('uploader');
 var filename = document.getElementById('filename');
+initApp();
+var uid;
 uploader.addEventListener('click', function(e) {
   var name = filename.value;
   if (name !== "") {
@@ -48,13 +50,27 @@ uploader.addEventListener('click', function(e) {
     console.log(newDate);
 
     // Get a key for a new Post.
-    var newPostKey = firebase.database().ref().child('posts').child(name).set({
+    var newPostKey = firebase.database().ref().child(name).set({
       //name: name,
       //url: url,
       html: editor.getValue(),
       css: editorcss.getValue(),
       js: editorjs.getValue(),
-      date: newDate
+      date: newDate,
+      userId:uid
+}).catch(function(error) {
+  console.log(error.message);
+  var errorMassag = document.getElementById('filepick');
+  var database = firebase.database().ref();
+  var body = document.body;
+  var txt = document.getElementById('txt');
+  var modal = document.getElementById('Errormodal');
+  modal.style.display = "block";
+  var newPost = error.message;
+  var errorMassage = document.createElement('div');
+    modal.appendChild(errorMassage);
+    errorMassage.innerHTML = error.message;
+    errorMassage.id = "uploadError";
 });
 
     // Write the new post's data simultaneously in the posts list and the user's post list.
@@ -72,7 +88,7 @@ uploader.addEventListener('click', function(e) {
 });
 window.onload = function() {
 var filepick = document.getElementById('filepick');
-var database = firebase.database().ref().child('posts');
+var database = firebase.database().ref();
 var filepicker = document.getElementById('filepicker');
 var txt = document.getElementById('txt');
 var modal = document.getElementById('modal');
@@ -87,7 +103,7 @@ database.on("child_added", snap=> {
   div.onclick = function () {
     var key = snap.key;
     console.log(key);
-    var ob = firebase.database().ref().child('posts/'+key);
+    var ob = firebase.database().ref().child(key);
     console.log(ob);
     //console.log(key);
   ob.on("child_added", function(snapshot) {
@@ -101,7 +117,7 @@ database.on("child_added", snap=> {
       //editor.setValue(code);
   };
 });
-    initApp();
+
 };
 
 var sign = document.getElementById('sign');
@@ -123,7 +139,7 @@ function initApp() {
         var providerData = user.providerData;
         // [START_EXCLUDE]
         // [END_EXCLUDE]
-        console.log("here");
+
         sign.innerHTML = '<a>'+displayName+'</a>';
       }
        else {
@@ -163,11 +179,11 @@ function initApp() {
         var email = user.email;
         var emailVerified = user.emailVerified;
         var photoURL = user.photoURL;
-        var uid = user.uid;
+       uid = user.uid;
         var phoneNumber = user.phoneNumber;
         var providerData = user.providerData;
         user.getIdToken().then(function(accessToken) {
-          document.getElementById('sign').innerHTML = '<a href="sign.html">Welcome '+displayName+'</a>'+
+          document.getElementById('sign').innerHTML = '<a href="sign.html"><b>Welcome</b><i> '+displayName+'</i></a>'+
           ' <img src="'+photoURL+'">'+'</a>';
 
         });
@@ -182,5 +198,5 @@ function initApp() {
   };
 
   window.addEventListener('load', function() {
-    initApp()
+    initApp();
   });

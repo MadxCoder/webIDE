@@ -102,12 +102,28 @@ border-style: solid;
   box-shadow: 12px 10px 0px #000;
 }
 #firebaseui-auth-container{
-  margin-bottom: 0;
   z-index: 0;
-  height: 70%;
-  width: 70%;
-  position: absolute;
-  top: 65%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.firebaseui-page-provider-sign-in {
+    background: inherit;
+}
+.firebaseui-container {
+    background-color: #fff;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    color: rgba(0,0,0,.87);
+    direction: ltr;
+    font: 16px Roboto,arial,sans-serif;
+    margin: 0 auto;
+    max-width: 360px;
+    overflow: visible;
+    position: relative;
+    text-align: left;
+    width: 100%;
 }
