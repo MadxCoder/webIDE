@@ -57,7 +57,7 @@ uploader.addEventListener('click', function(e) {
       css: editorcss.getValue(),
       js: editorjs.getValue(),
       date: newDate,
-      userId:uid
+      userId:(uid != undefined) ? uid : 'anonymous'
 }).catch(function(error) {
   console.log(error.message);
   alart(error.message)
