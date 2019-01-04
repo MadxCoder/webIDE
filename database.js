@@ -60,6 +60,7 @@ uploader.addEventListener('click', function(e) {
       userId:uid
 }).catch(function(error) {
   console.log(error.message);
+  alart(error.message)
   var errorMassag = document.getElementById('filepick');
   var database = firebase.database().ref();
   var body = document.body;
